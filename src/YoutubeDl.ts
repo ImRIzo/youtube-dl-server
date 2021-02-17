@@ -8,7 +8,7 @@ const bin = path.resolve('tools/bin/youtube-dl' +(isWin ? '.exe' : ''));
 export class YoutubeDl {
     public static async getVideoMetadata(url: string, options?: string) {
         options = '-g -f mp4';
-        const command = `${bin} ${options} --dump-json ${url}`;
+        const command = `${bin} ${options} ${url}`;
         return await new Promise<any>((resolve, reject) => {
             exec(command, (error: ExecException | null, stdout: string, stderr: string) => {
                 if(error) {
